@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Simple Developer Landing Page</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="script.js" defer></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
       rel="stylesheet"
@@ -18,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
+
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -51,7 +53,7 @@
     </style>
   </head>
   <body
-    class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200"
+    class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition duration-300 ease"
   >
     <div
       class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
@@ -63,7 +65,7 @@
           >
             <!-- TopNavBar -->
             <header
-              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200/80 dark:border-slate-800/80 px-10 py-4"
+              class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200/80 dark:border-slate-800/80 px-10 py-4 transition duration-300 ease"
             >
               <a href="index.html">
                 <div
@@ -97,17 +99,227 @@
                     >Contact</a
                   >
                   <button
+                    id="theme-toggle"
+                    onclick="toggleDarkMode()"
+                    class="p-1 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition-colors duration-300"
                     aria-label="Toggle dark mode"
-                    class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors bg-gray-200"
-                    data-purpose="theme-toggle"
                   >
-                    <span
-                      class="inline-block w-4 h-4 transform bg-white rounded-full transition-transform translate-x-1"
-                    ></span>
+                    <!-- Sun Icon (Visible in dark mode) -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 hidden dark:block"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M6 12a6 6 0 1112 0 6 6 0 01-12 0z"
+                      />
+                    </svg>
+                    <!-- Moon Icon (Visible in light mode) -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 block dark:hidden"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                      />
+                    </svg>
                   </button>
                 </div>
               </nav>
+              <div class="flex items-center gap-4 md:hidden">
+                <button
+                  onclick="toggleDarkMode()"
+                  class="p-1 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition-colors duration-300"
+                  aria-label="Toggle dark mode"
+                >
+                  <!-- Sun Icon (Visible in dark mode) -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 hidden dark:block"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M6 12a6 6 0 1112 0 6 6 0 01-12 0z"
+                    />
+                  </svg>
+                  <!-- Moon Icon (Visible in light mode) -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 block dark:hidden"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  id="menu-toggle"
+                  class="p-2 text-slate-900 dark:text-white"
+                  aria-label="Open navigation menu"
+                  aria-controls="mobile-menu"
+                  aria-expanded="false"
+                >
+                  <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+              </div>
+              <div
+                id="mobile-menu"
+                class="fixed inset-0 z-50 bg-black/50 hidden md:hidden"
+                aria-hidden="true"
+                role="dialog"
+                aria-modal="true"
+                tabindex="-1"
+              >
+                <div
+                  class="fixed top-0 right-0 w-64 h-full bg-white dark:bg-slate-900 p-6 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto"
+                >
+                  <button
+                    id="close-menu"
+                    class="p-2 mb-6 text-slate-900 dark:text-white"
+                    aria-label="Close navigation menu"
+                  >
+                    <span class="material-symbols-outlined text-2xl"
+                      >close</span
+                    >
+                  </button>
+                  <nav class="flex flex-col gap-6">
+                    <a
+                      class="text-sm font-bold leading-normal text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"
+                      href="#about"
+                      >About</a
+                    >
+                    <a
+                      class="text-sm font-bold leading-normal text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"
+                      href="#projects"
+                      >Projects</a
+                    >
+                    <a
+                      class="text-sm font-bold leading-normal text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"
+                      href="#contact"
+                      >Contact</a
+                    >
+                  </nav>
+                </div>
+              </div>
             </header>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                const menuToggle = document.getElementById("menu-toggle");
+                const mobileMenu = document.getElementById("mobile-menu");
+                const closeMenu = document.getElementById("close-menu");
+                const sidebar = mobileMenu.querySelector("div");
+                let focusedElementBeforeOpen;
+
+                const focusableSelector =
+                  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+                let firstFocusable;
+                let lastFocusable;
+
+                function openMenu() {
+                  focusedElementBeforeOpen = document.activeElement;
+                  mobileMenu.classList.remove("hidden");
+                  mobileMenu.setAttribute("aria-hidden", "false");
+                  document.body.style.overflow = "hidden";
+                  setTimeout(() => {
+                    sidebar.classList.remove("translate-x-full");
+                  }, 10);
+                  menuToggle.setAttribute("aria-expanded", "true");
+                  const focusableElements =
+                    sidebar.querySelectorAll(focusableSelector);
+                  firstFocusable = focusableElements[0];
+                  lastFocusable =
+                    focusableElements[focusableElements.length - 1];
+                  closeMenu.focus();
+                  mobileMenu.addEventListener("keydown", trapFocus);
+                }
+
+                function closeMenuFunc(restoreFocus = true, targetId = null) {
+                  sidebar.classList.add("translate-x-full");
+                  menuToggle.setAttribute("aria-expanded", "false");
+                  setTimeout(() => {
+                    mobileMenu.classList.add("hidden");
+                    mobileMenu.setAttribute("aria-hidden", "true");
+                    document.body.style.overflow = "";
+                    if (restoreFocus) {
+                      focusedElementBeforeOpen.focus();
+                    }
+                    if (targetId) {
+                      const targetElement = document.getElementById(targetId);
+                      if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: "smooth" });
+                        // Focus the target for accessibility (add tabindex="-1" to your sections if needed)
+                        targetElement.focus({ preventScroll: true });
+                      }
+                    }
+                  }, 300);
+                  mobileMenu.removeEventListener("keydown", trapFocus);
+                }
+
+                function trapFocus(e) {
+                  if (e.key === "Tab") {
+                    if (e.shiftKey) {
+                      if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                      }
+                    } else {
+                      if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                      }
+                    }
+                  }
+                }
+
+                menuToggle.addEventListener("click", openMenu);
+                closeMenu.addEventListener("click", () => closeMenuFunc(true));
+                mobileMenu.addEventListener("click", (e) => {
+                  if (e.target === mobileMenu) {
+                    closeMenuFunc(true);
+                  }
+                });
+                document.addEventListener("keydown", (e) => {
+                  if (
+                    e.key === "Escape" &&
+                    !mobileMenu.classList.contains("hidden")
+                  ) {
+                    closeMenuFunc(true);
+                  }
+                });
+
+                // Add auto-close and scroll handling for menu links
+                const menuLinks = sidebar.querySelectorAll('a[href^="#"]');
+                menuLinks.forEach((link) => {
+                  link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute("href").substring(1);
+                    closeMenuFunc(false, targetId);
+                  });
+                });
+              });
+            </script>
             <!-- HeroSection -->
             <main class="w-full">
               <section class="py-16 sm:py-24 px-4">
@@ -498,6 +710,7 @@
                   © 2025 Sikolethu Mkhabela. All rights reserved.
                 </p>
                 <div class="flex items-center gap-4">
+                  <!-- LinkedIn Icon Link -->
                   <a
                     class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
                     data-alt="LinkedIn profile"
@@ -516,6 +729,8 @@
                       ></path>
                     </svg>
                   </a>
+
+                  <!-- GitHub Icon Link -->
                   <a
                     class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
                     data-alt="GitHub profile"
@@ -527,30 +742,12 @@
                       fill="currentColor"
                       viewbox="0 0 24 24"
                     >
+                      <!-- Full path data for GitHub icon -->
                       <path
                         clip-rule="evenodd"
-                        d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                        d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.9.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.188.585.687.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"
                         fill-rule="evenodd"
                       ></path>
-                    </svg>
-                  </a>
-                  <a
-                    class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
-                    data-alt="mail"
-                    href="#"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="bg-slate-600"
-                    >
-                      <path
-                        clip-rule="evenodd"
-                        d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z"
-                        fill-rule="evenodd"
-                      />
                     </svg>
                   </a>
                 </div>
