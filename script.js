@@ -1,11 +1,28 @@
-// Example JavaScript function (can be adapted for frameworks)
+// 1. The Toggle Function
 function toggleDarkMode() {
   const htmlEl = document.documentElement;
+
+  // Toggle the class
   htmlEl.classList.toggle("dark");
-  // Optional: Save preference to localStorage
-  localStorage.theme = htmlEl.classList.contains("dark") ? "dark" : "light";
+
+  // Save the preference based on the CURRENT state of the class
+  if (htmlEl.classList.contains("dark")) {
+    localStorage.theme = "dark";
+  } else {
+    localStorage.theme = "light";
+  }
 }
 
+// 2. Optional: Button to reset to "System" (Clear memory)
+// If you want a button that says "Use System Theme", use this:
+function resetToSystem() {
+  localStorage.removeItem("theme");
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
 // harmburge logic
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -95,5 +112,45 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetId = link.getAttribute("href").substring(1);
       closeMenuFunc(false, targetId);
     });
+  });
+});
+
+// scroll to top button
+const scrollBtn = document.getElementById("scrollToTopBtn");
+
+// Show/Hide button based on scroll position
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    // Show button
+    scrollBtn.classList.remove(
+      "translate-y-10",
+      "opacity-0",
+      "pointer-events-none"
+    );
+    scrollBtn.classList.add(
+      "translate-y-0",
+      "opacity-100",
+      "pointer-events-auto"
+    );
+  } else {
+    // Hide button
+    scrollBtn.classList.add(
+      "translate-y-10",
+      "opacity-0",
+      "pointer-events-none"
+    );
+    scrollBtn.classList.remove(
+      "translate-y-0",
+      "opacity-100",
+      "pointer-events-auto"
+    );
+  }
+});
+
+// Smooth scroll to top functionality
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
   });
 });
