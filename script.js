@@ -154,3 +154,4 @@ scrollBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+// Parallex effect
