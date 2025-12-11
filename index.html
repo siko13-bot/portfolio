@@ -277,12 +277,28 @@
                       class="w-full @[864px]:w-1/2 flex justify-center @[864px]:justify-end"
                     >
                       <div
-                        class="w-64 h-64 sm:w-80 sm:h-80 bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                        data-alt="Professional headshot of Sikolethu Mkhabela, a full stack developer"
-                        style="
-                          background: url('sikolethu.jpg') top center / cover;
-                        "
-                      ></div>
+                        id="parallax-container"
+                        class="w-64 h-64 sm:w-80 sm:h-80 aspect-square rounded-full relative overflow-hidden"
+                      >
+                        <!-- Background layer (slower) -->
+                        <div
+                          class="absolute inset-0 bg-center bg-no-repeat bg-cover"
+                          data-depth="0.2"
+                          style="
+                            background: url('sikolethu-bg.jpg') top center /
+                              cover;
+                          "
+                        ></div>
+                        <!-- Subject layer (faster, comes out) -->
+                        <div
+                          class="absolute inset-0 bg-center bg-no-repeat bg-cover"
+                          data-depth="0.8"
+                          style="
+                            background: url('sikolethu-subject.png') top center /
+                              cover;
+                          "
+                        ></div>
+                      </div>
                     </div>
                   </div>
                 </div>
