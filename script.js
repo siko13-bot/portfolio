@@ -154,4 +154,19 @@ scrollBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
-// Parallex effect
+// image loading
+document.querySelectorAll(".parallax-layer").forEach((layer) => {
+  const largeSrc = layer.dataset.bgLarge;
+  if (!largeSrc) return;
+
+  const img = new Image();
+  img.src = largeSrc;
+
+  img.onload = () => {
+    layer.style.backgroundImage = `url('${largeSrc}')`;
+
+    // Tailwind class swap
+    layer.classList.remove("blur-xl", "scale-105");
+    layer.classList.add("blur-0", "scale-100");
+  };
+});
