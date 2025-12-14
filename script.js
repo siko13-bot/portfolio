@@ -154,19 +154,25 @@ scrollBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
 // image loading
 document.querySelectorAll(".parallax-layer").forEach((layer) => {
   const largeSrc = layer.dataset.bgLarge;
-  if (!largeSrc) return;
 
-  const img = new Image();
-  img.src = largeSrc;
+  // 1. Ensure the element is an <img> tag before proceeding (for safety)
+  if (!largeSrc || layer.tagName !== "IMG") return;
 
-  img.onload = () => {
-    layer.style.backgroundImage = `url('${largeSrc}')`;
+  // 2. Create a temporary Image object to handle pre-loading
+  const newImg = new Image();
+  newImg.src = largeSrc;
 
-    // Tailwind class swap
-    layer.classList.remove("blur-xl", "scale-105");
+  // 3. Once the high-res image is fully loaded
+  newImg.onload = () => {
+    // THE FIX: Set the new image URL to the <img> element's src attribute
+    layer.src = largeSrc;
+
+    // Tailwind class swap (removes all blur/scale classes)
+    layer.classList.remove("blur-xl", "blur-2xl", "scale-105");
     layer.classList.add("blur-0", "scale-100");
   };
 });

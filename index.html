@@ -5,8 +5,22 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Simple Developer Landing Page</title>
+    <link
+  rel="preload"
+  href="sikolethu-subject.webp"
+  as="image"
+  type="image/webp"
+  fetchpriority="high"
+/>
+    <link
+  rel="preload"
+  href="sikolethu-bg.webp"
+  as="image"
+  type="image/webp"
+  fetchpriority="high"
+/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20251214" defer></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
       rel="stylesheet"
@@ -36,6 +50,7 @@
     <link rel="preconnect" href="https://github.com" />
     <link rel="dns-prefetch" href="https://siko13-bot.github.io" />
     <link rel="dns-prefetch" href="https://github.com" />
+    
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -280,30 +295,28 @@
                       </div>
                     </div>
                 <div class="w-full @[864px]:w-1/2 flex justify-center @[864px]:justify-end">
-  <div
-    id="parallax-container"
-    class="w-64 h-64 sm:w-80 sm:h-80 aspect-square rounded-full relative overflow-hidden"
-  >
-    <!-- Background layer -->
-    <div
-      class="parallax-layer absolute inset-0 bg-center bg-no-repeat bg-cover
-             blur-xl scale-105 transition-all duration-700 ease-out
-             will-change-[filter,transform]"
-      data-depth="0.2"
-      data-bg-large="sikolethu-bg.webp"
-      style="background-image:url('sikolethu-bg-small.jpg')"
-    ></div>
+<div
+  id="parallax-container"
+  class="w-64 h-64 sm:w-80 sm:h-80 aspect-square rounded-full relative overflow-hidden"
+>
+  <img
+    class="parallax-layer absolute inset-0 w-full h-full object-cover blur-xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
+    src="sikolethu-bg-small.jpg"
+    data-bg-large="sikolethu-bg.webp"
+    alt="Abstract background behind profile photo"
+    loading="eager"
+    fetchpriority="low"
+  />
 
-    <!-- Subject layer -->
-    <div
-      class="parallax-layer absolute inset-0 bg-center bg-no-repeat bg-cover
-             blur-xl scale-105 transition-all duration-700 ease-out
-             will-change-[filter,transform]"
-      data-depth="0.8"
-      data-bg-large="sikolethu-subject.webp"
-      style="background-image:url('sikolethu-subject-small.jpg')"
-    ></div>
-  </div>
+  <img
+    class="parallax-layer absolute inset-0 w-full h-full object-cover blur-2xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
+    src="sikolethu-subject-small.jpg"
+    data-bg-large="sikolethu-subject.webp"
+    alt="Profile photo of Sikolethu Mkhabela"
+    loading="eager"
+    fetchpriority="high"
+  />
+</div>
 </div>
 
 
@@ -537,12 +550,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-primary hover:underline"
+                          class="text-sm font-bold text-white-100 hover:underline"
                           href="https://siko13-bot.github.io/MYSQUARE/" target="_blank"
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-primary hover:underline"
+                          class="text-sm font-bold text-white-100 hover:underline"
                           href="https://github.com/siko13-bot/MYSQUARE" target="_blank"
                           >GitHub</a
                         >
@@ -586,12 +599,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-primary hover:underline"
+                          class="text-sm font-bold text-white-100 hover:underline"
                           href="https://siko13-bot.github.io/ChatBotLandingPage/" target="_blank" 
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-primary hover:underline"
+                          class="text-sm font-bold text-white-100 hover:underline"
                           href="https://github.com/siko13-bot/ChatBotLandingPage" target="_blank"
                           >GitHub</a
                         >
@@ -657,7 +670,7 @@
                   <a
                     class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
                     data-alt="LinkedIn profile"
-                    href="https://www.linkedin.com/in/sikolethu-mkhabela-08ab85296/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4cf0gJDmRdivHpRdaQJgQA%3D%3D"
+                    href="https://www.linkedin.com/in/sikolethu-mkhabela-08ab85296/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4cf0gJDmRdivHpRdaQJgQA%3D%3D" target="_blank"
                   >
                     <svg
                       aria-hidden="true"
@@ -677,7 +690,7 @@
                   <a
                     class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
                     data-alt="GitHub profile"
-                    href="https://github.com/siko13-bot"
+                    href="https://github.com/siko13-bot" target="_blank"
                   >
                     <svg
                       aria-hidden="true"
@@ -721,6 +734,52 @@
         />
       </svg>
     </button>
-    
+    <script>
+      /**
+       * Lazily injects <link rel="prefetch"> elements into the <head> using JavaScript.
+       * This ensures the browser only starts downloading these non-critical resources
+       * after the main page content has finished rendering.
+       */
+      function lazyPrefetch() {
+        // List of all external links to prefetch
+        const urlsToPrefetch = [
+          "https://siko13-bot.github.io/MYSQUARE/", // Project 1 Live Demo
+          "https://github.com/siko13-bot/MYSQUARE", // Project 1 GitHub
+          "https://www.linkedin.com/in/sikolethu-mkhabela-08ab85296/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4cf0gJDmRdivHpRdaQJgQA%3D%3D", // LinkedIn Profile
+          "https://github.com/siko13-bot" // GitHub Profile
+        ];
+
+        const head = document.head;
+
+        urlsToPrefetch.forEach(url => {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = url;
+          // You can also add 'as' and 'type' hints for better optimization, e.g.,
+          // link.as = 'document';
+          head.appendChild(link);
+        });
+        
+        // Remove the event listeners after prefetching runs once
+        window.removeEventListener('load', runPrefetchWithDelay, { once: true });
+        document.removeEventListener('mousemove', lazyPrefetch, { once: true });
+        document.removeEventListener('touchstart', lazyPrefetch, { once: true });
+      }
+      
+      // Strategy 1: The "After Everything Loaded" method (guaranteed idle time)
+      // Waits for the entire page (including images) to load, then waits 500ms
+      // to ensure the browser is truly idle before injecting the prefetch links.
+      function runPrefetchWithDelay() {
+        setTimeout(lazyPrefetch, 500);
+      }
+      
+      window.addEventListener('load', runPrefetchWithDelay, { once: true });
+
+      // Strategy 2 (Alternative/Addition): The "On First User Interaction" method
+      // If the user moves their mouse, scrolls, or taps, it indicates they are engaged,
+      // and prefetching can start immediately. This runs at most once.
+      document.addEventListener('mousemove', lazyPrefetch, { once: true });
+      document.addEventListener('touchstart', lazyPrefetch, { once: true });
+    </script>
   </body>
 </html>
