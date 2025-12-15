@@ -299,23 +299,29 @@
   id="parallax-container"
   class="w-64 h-64 sm:w-80 sm:h-80 aspect-square rounded-full relative overflow-hidden"
 >
-  <img
-    class="parallax-layer absolute inset-0 w-full h-full object-cover blur-xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
-    src="sikolethu-bg-small.jpg"
-    data-bg-large="sikolethu-bg.webp"
-    alt="Abstract background behind profile photo"
-    loading="eager"
-    fetchpriority="low"
-  />
+  <picture>
+    <source media="(max-width: 480px)" srcset="sikolethu-bg-480.webp" />
+    <img
+      class="parallax-layer absolute inset-0 w-full h-full object-cover blur-xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
+      src="sikolethu-bg-small.jpg"
+      data-bg-large="sikolethu-bg.webp"
+      alt="Abstract background behind profile photo"
+      loading="eager"
+      fetchpriority="low"
+    />
+  </picture>
 
-  <img
-    class="parallax-layer absolute inset-0 w-full h-full object-cover blur-2xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
-    src="sikolethu-subject-small.jpg"
-    data-bg-large="sikolethu-subject.webp"
-    alt="Profile photo of Sikolethu Mkhabela"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <picture>
+    <source media="(max-width: 480px)" srcset="sikolethu-subject-480.webp" />
+    <img
+      class="parallax-layer absolute inset-0 w-full h-full object-cover blur-2xl scale-105 transition-all duration-650 ease-out will-change-[filter,transform]"
+      src="sikolethu-subject-small.jpg"
+      data-bg-large="sikolethu-subject.webp"
+      alt="Profile photo of Sikolethu Mkhabela"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </picture>
 </div>
 </div>
 
@@ -341,7 +347,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="React logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuADnOnvJRvChSmwJF4SUuMVMy8e-t-HoyYdICy_7oxs23UEUdBWwF3cFB7PDAdkc8ytEBICmzoygpQpAjkTm2_kObIody2rZmxI2gh8wDs3W4tf807DyBfOv0uUlN-D3X7JuSe4mRBsiCMIwQY53XPzVvXlwutjrCKs9JFxw3pWfXYf8ECS2l1luBigC-3KGVG3DNKsniZFoo7OWsWl-d12fsmsS9-QpPtxXzYksMFrEU5X6wQ4L82yL5L6js10uYiMHkQab7Tp8fs"
+                      src="Assets/icons/react-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -355,7 +361,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="Node.js logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4uRAHi7EdFNBkYWft2sUm_2TsnSp5A8y0rZA6ITOOdeNdCf3NQmuYZylxQfEMJzi3Bk3-1GdubhjhcCPdVtQD-8TJMN2c-nq_T1WTjibhn2-Oe9ZMV7N22sbVQnmmpzwC9g4x8c9SZtZuFXTFjDTo_WAUOEliH15ihhOuhXOXjILuxlZjB5VaMDOlUbb2lF2C0axaYqQptly31gDcRIiYeQA27RpIIJJvHKafk84CsDNnuktjVcM1PGJkzXSRGBE-0a7EXZ8RGTE"
+                      src="Assets/icons/node-js-svgrepo-com (1)_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -369,7 +375,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="Python logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI8LGEjLv5RmMSy5GbdMCvj_wfLA-oQ8nDwXoeBtNqJxdaqMgeOVVoBwKX2Cqqs-g17FapwgAu-gkFKMc8PV4HDchzjqDqVl_6gCpDaKYbOicx7Akn6ed8X-2qn6P8HuC-wtLR3B3Oa3B5v5VSmw_45FK1NDyP2Fm4v7YwKPV_x4dqvSdSakRw1UewyTYCOyrmv-X8_Z8aXPcJnJhDuzpU0YTID1A1EW0QrPoruGA0f2YWSJooGcFWXQQm5UPC1aDTWJJAh__6gZM"
+                      src="Assets/icons/python-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -383,7 +389,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="TypeScript logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMiPSXhOzj2jnzQ4xuphDP8TuxckizsMb-UYMvPSSRzFkmJPF8B_odWEDbOgbPyogEwALV_IxPVMHXGcWiRNLAvynTaIWU2ONVdlnSH87HNiJDjV-DfwnjQIqkbMSUd8KbzAOrpedDqeLDsjPiuVWfZKD9MySwaUWx9piMA-I9PkmdwB2peE-LIsHYiGehfKUKt2RRVWyI1ayrbBrgtahISkfXH5vPNZoJ7-vLTZWsJLifiUuKLrO1bDsKQnxlTz4_r-L0geVHVoE"
+                      src="Assets/icons/typescript-officialrepo-com.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -411,7 +417,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="AWS logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBylf1XcxxrbKh3xQApv_DVVPkARxV6xi3CvNIUOyGoYJ0EhOheY9eU7c2VgSqJxg4IMZgYozILrLThjd2p_PFSsYCkMVLxSwSmEtIPlQTNW8cnkwa3Ok2md7cgL_Nj471PsrplWhgdv9PSmYVwAzx4WBDSLHYaqTp1CA0z49KnY6JGqBAw6czKtV8t6iEc6re3vnK5dj9R6ZJ_ZiR6rHHVTMKBioAk5l6kz9XQC45W2MdNkP5Y92Y8mOOO1MlZxIuCP17JGoO09SM"
+                      src="Assets/icons/aws-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -424,8 +430,8 @@
                   >
                     <img
                       class="h-12 w-12"
-                      data-alt="React logo"
-                      src="Assets/icons/html-5.png"
+                      data-alt="HTML5 logo"
+                      src="Assets/icons/html-5-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -438,8 +444,8 @@
                   >
                     <img
                       class="h-12 w-12"
-                      data-alt="Node.js logo"
-                      src="Assets/icons/css-3.png"
+                      data-alt="CSS logo"
+                      src="Assets/icons/css-3-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -452,8 +458,8 @@
                   >
                     <img
                       class="h-12 w-12"
-                      data-alt="Python logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI8LGEjLv5RmMSy5GbdMCvj_wfLA-oQ8nDwXoeBtNqJxdaqMgeOVVoBwKX2Cqqs-g17FapwgAu-gkFKMc8PV4HDchzjqDqVl_6gCpDaKYbOicx7Akn6ed8X-2qn6P8HuC-wtLR3B3Oa3B5v5VSmw_45FK1NDyP2Fm4v7YwKPV_x4dqvSdSakRw1UewyTYCOyrmv-X8_Z8aXPcJnJhDuzpU0YTID1A1EW0QrPoruGA0f2YWSJooGcFWXQQm5UPC1aDTWJJAh__6gZM"
+                      data-alt="JavaScript logo"
+                      src="Assets/icons/javascript-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -466,8 +472,8 @@
                   >
                     <img
                       class="h-12 w-12"
-                      data-alt="TypeScript logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMiPSXhOzj2jnzQ4xuphDP8TuxckizsMb-UYMvPSSRzFkmJPF8B_odWEDbOgbPyogEwALV_IxPVMHXGcWiRNLAvynTaIWU2ONVdlnSH87HNiJDjV-DfwnjQIqkbMSUd8KbzAOrpedDqeLDsjPiuVWfZKD9MySwaUWx9piMA-I9PkmdwB2peE-LIsHYiGehfKUKt2RRVWyI1ayrbBrgtahISkfXH5vPNZoJ7-vLTZWsJLifiUuKLrO1bDsKQnxlTz4_r-L0geVHVoE"
+                      data-alt="PHP logo"
+                      src="Assets/icons/php-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -480,8 +486,8 @@
                   >
                     <img
                       class="h-12 w-12"
-                      data-alt="PostgreSQL logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfvdUzAm39IUExTNVT4OHJgv-lTjq1boV0D4mFpOGZeb1uzzeDndo1tdp8yqrcF5FGFcdhCqRjevXW3HBdrjfX-XLOjzLdewkn7gzU5cPs8j39KdCrp16dQ5iByrgQbcxMLbshb_9j6EkFhrjB-5SSWS23K9yiI0V3IDKAVStUyd9tCkhwNG8Ni8GTxzLMVFsQDuT4Co8Vmh_Vh-oL-ro0IskKFSkJdQCD79hDU8pXQfMNObcpBl-yYHFRN5RrQPM3s2ZfIm7ELKA"
+                      data-alt="MySQL logo"
+                      src="Assets/icons/mysql-logo-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -495,7 +501,7 @@
                     <img
                       class="h-12 w-12"
                       data-alt="next js logo"
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBylf1XcxxrbKh3xQApv_DVVPkARxV6xi3CvNIUOyGoYJ0EhOheY9eU7c2VgSqJxg4IMZgYozILrLThjd2p_PFSsYCkMVLxSwSmEtIPlQTNW8cnkwa3Ok2md7cgL_Nj471PsrplWhgdv9PSmYVwAzx4WBDSLHYaqTp1CA0z49KnY6JGqBAw6czKtV8t6iEc6re3vnK5dj9R6ZJ_ZiR6rHHVTMKBioAk5l6kz9XQC45W2MdNkP5Y92Y8mOOO1MlZxIuCP17JGoO09SM"
+                      src="Assets/icons/nextjs-svgrepo-com_processed_by_imagy.svg"
                     />
                     <p
                       class="text-sm font-medium text-slate-700 dark:text-slate-300"
@@ -570,7 +576,7 @@
                       class="w-full bg-center bg-no-repeat aspect-video bg-cover"
                       data-alt="Screenshot of a data visualization dashboard with charts and graphs"
                       style="
-                        background: url('Assets/images/104shots_so.webp') center center / cover no-repeat;
+                        background: url('Assets/images/908shots_so.webp') center center / cover no-repeat;
                       "
                     ></div>
                     <div class="p-6 flex flex-col gap-4">
@@ -600,12 +606,12 @@
                       <div class="flex items-center gap-4 mt-2">
                         <a
                           class="text-sm font-bold text-white-100 hover:underline"
-                          href="https://siko13-bot.github.io/ChatBotLandingPage/" target="_blank" 
+                          href="https://intern-connect-eight.vercel.app/" target="_blank" 
                           >Live Demo</a
                         >
                         <a
                           class="text-sm font-bold text-white-100 hover:underline"
-                          href="https://github.com/siko13-bot/ChatBotLandingPage" target="_blank"
+                          href="https://github.com/siko13-bot/InternConnect" target="_blank"
                           >GitHub</a
                         >
                       </div>
@@ -735,51 +741,51 @@
       </svg>
     </button>
     <script>
-      /**
-       * Lazily injects <link rel="prefetch"> elements into the <head> using JavaScript.
-       * This ensures the browser only starts downloading these non-critical resources
-       * after the main page content has finished rendering.
-       */
-      function lazyPrefetch() {
-        // List of all external links to prefetch
-        const urlsToPrefetch = [
-          "https://siko13-bot.github.io/MYSQUARE/", // Project 1 Live Demo
-          "https://github.com/siko13-bot/MYSQUARE", // Project 1 GitHub
-          "https://www.linkedin.com/in/sikolethu-mkhabela-08ab85296/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4cf0gJDmRdivHpRdaQJgQA%3D%3D", // LinkedIn Profile
-          "https://github.com/siko13-bot" // GitHub Profile
-        ];
+      // image loading (Keep the image loading function you were previously given)
+// ...
 
-        const head = document.head;
+// Lazy Prefetch Logic
+document.addEventListener('DOMContentLoaded', () => {
+  /**
+   * Lazily injects <link rel="prefetch"> elements into the <head> using JavaScript.
+   * This ensures the browser only starts downloading these non-critical resources
+   * after the main page content has finished rendering.
+   */
+  function lazyPrefetch() {
+    // List of all external links to prefetch
+    const urlsToPrefetch = [
+      "https://siko13-bot.github.io/MYSQUARE/", // Project 1 Live Demo
+      "https://github.com/siko13-bot/MYSQUARE", // Project 1 GitHub
+      "https://intern-connect-eight.vercel.app/", // Project 2 Live Demo
+      "https://github.com/siko13-bot/InternConnect", // Project 2 GitHub
+      "https://www.linkedin.com/in/sikolethu-mkhabela-08ab85296/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4cf0gJDmRdivHpRdaQJgQA%3D%3D", // LinkedIn Profile
+      "https://github.com/siko13-bot" // GitHub Profile
+    ];
 
-        urlsToPrefetch.forEach(url => {
-          const link = document.createElement('link');
-          link.rel = 'prefetch';
-          link.href = url;
-          // You can also add 'as' and 'type' hints for better optimization, e.g.,
-          // link.as = 'document';
-          head.appendChild(link);
-        });
-        
-        // Remove the event listeners after prefetching runs once
-        window.removeEventListener('load', runPrefetchWithDelay, { once: true });
-        document.removeEventListener('mousemove', lazyPrefetch, { once: true });
-        document.removeEventListener('touchstart', lazyPrefetch, { once: true });
-      }
-      
-      // Strategy 1: The "After Everything Loaded" method (guaranteed idle time)
-      // Waits for the entire page (including images) to load, then waits 500ms
-      // to ensure the browser is truly idle before injecting the prefetch links.
-      function runPrefetchWithDelay() {
-        setTimeout(lazyPrefetch, 500);
-      }
-      
-      window.addEventListener('load', runPrefetchWithDelay, { once: true });
+    const head = document.head;
 
-      // Strategy 2 (Alternative/Addition): The "On First User Interaction" method
-      // If the user moves their mouse, scrolls, or taps, it indicates they are engaged,
-      // and prefetching can start immediately. This runs at most once.
-      document.addEventListener('mousemove', lazyPrefetch, { once: true });
-      document.addEventListener('touchstart', lazyPrefetch, { once: true });
+    urlsToPrefetch.forEach(url => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      // Note: For documents/pages, link.as is generally omitted or set to 'document'
+      head.appendChild(link);
+    });
+
+    // Remove the event listener after prefetching runs once
+    window.removeEventListener('load', runPrefetchWithDelay, { once: true });
+  }
+
+  // Strategy: The "After Everything Loaded" method with a delay.
+  // Waits for the entire page (including images) to load, then waits 1000ms.
+  function runPrefetchWithDelay() {
+    // Wait for 1000 milliseconds (1 second) as requested
+    setTimeout(lazyPrefetch, 5000); 
+  }
+
+  // Attach the function to the 'load' event, which fires after all resources (images, etc.) are loaded.
+  window.addEventListener('load', runPrefetchWithDelay, { once: true });
+});
     </script>
   </body>
 </html>
