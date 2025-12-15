@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Message Sent!</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script>
+      /**
+       * Checks localStorage and system preference to set the initial theme class
+       * on the <html> element, preventing FOUC (Flash of Unstyled Content).
+       */
+      const savedTheme = localStorage.getItem("theme");
+
+      // Check if theme preference is explicitly stored or matches system preference
+      if (
+        savedTheme === "dark" ||
+        (savedTheme === null &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <style>
+      /* Optional: style to match your dark mode background */
+      body {
+        /* Default background for light mode */
+        background-color: #f1f5f9;
+      }
+
+      /* Specific dark mode background */
+      .dark body {
+        background-color: #0f172a; /* slate-900 */
+      }
+    </style>
+  </head>
+
+  <body class="flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-xl text-center">
+      <h1
+        class="text-4xl sm:text-5xl font-extrabold !text-slate-900 dark:text-white mb-4"
+      >
+        Message Sent!
+      </h1>
+      <p class="text-xl text-slate-600 dark:text-slate-600 mb-8">
+        Thank you for reaching out. I'll get back to you as soon as possible.
+      </p>
+      <a
+        href="./index.html"
+        class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-6 py-3 text-base font-bold text-white shadow-md transition-all duration-300 hover:bg-slate-700 dark:bg-[#0d59f2] dark:text-slate-50 dark:hover:bg-[#0a47c2]"
+      >
+        Go Back to Home
+      </a>
+    </div>
+  </body>
+</html>

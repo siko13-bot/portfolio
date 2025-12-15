@@ -176,3 +176,40 @@ document.querySelectorAll(".parallax-layer").forEach((layer) => {
     layer.classList.add("blur-0", "scale-100");
   };
 });
+// prefetching the thank_you.html
+// Function to handle the prefetch
+function prefetchThankYouPage() {
+  const head = document.head;
+  const url = "./thank_you.html";
+
+  // Check if the link is already prefetched to avoid duplicates
+  if (document.querySelector(`link[rel="prefetch"][href="${url}"]`)) {
+    return;
+  }
+
+  // Create and inject the prefetch link
+  const link = document.createElement("link");
+  link.rel = "prefetch";
+  link.href = url;
+  link.as = "document"; // Hint to the browser that this is an HTML page
+  head.appendChild(link);
+
+  // OPTIONAL: Remove the listener after the first interaction
+  // This ensures the prefetch only happens once per page load.
+  const form = document.getElementById("contact-form");
+  if (form) {
+    form.removeEventListener("focusin", prefetchThankYouPage);
+  }
+}
+
+// Find the form and attach the event listener
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+
+  if (form) {
+    // We use the 'focusin' event on the form container.
+    // This event bubbles up, so it triggers when *any* input inside the form
+    // (text fields, textarea, etc.) receives focus (by clicking or tabbing).
+    form.addEventListener("focusin", prefetchThankYouPage, { once: true });
+  }
+});

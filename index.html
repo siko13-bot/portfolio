@@ -44,14 +44,7 @@
       } else {
         document.documentElement.classList.remove("dark");
       }
-    </script>
-    <!-- prefetching my project links -->
-    <link rel="preconnect" href="https://siko13-bot.github.io" />
-    <link rel="preconnect" href="https://github.com" />
-    <link rel="dns-prefetch" href="https://siko13-bot.github.io" />
-    <link rel="dns-prefetch" href="https://github.com" />
-    
-    <script>
+
       tailwind.config = {
         darkMode: "class",
         theme: {
@@ -81,6 +74,7 @@
       }
       html {
         scroll-behavior: smooth;
+    
       }
     </style>
 
@@ -252,6 +246,11 @@
                       href="#contact"
                       >Contact</a
                     >
+                    <a
+                      class="text-sm font-bold leading-normal text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"
+                      href="Assets/SikolethuMkhabelaResume.pdf" download="SikolethuMkhabelaResume.pdf"
+                      >Download CV</a
+                    >
                   </nav>
                 </div>
               </div>
@@ -259,6 +258,7 @@
 
             <!-- HeroSection -->
             <main class="w-full">
+
               <section class="py-16 sm:py-24 px-4">
                 <div class="@container">
                   <div
@@ -333,6 +333,7 @@
 
               <!-- Tech Stack Section -->
               <section class="py-16 sm:py-20" id="about">
+                
                 <h2
                   class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-6 pt-5 text-center"
                 >
@@ -637,27 +638,28 @@
                     I'm always open to discussing new projects or collaboration
                     opportunities. Feel free to send me a message.
                   </p>
-                  <form class="max-w-xl mx-auto mt-8 flex flex-col gap-4">
+                  <form id="contact-form" action="./thank_you.html" method="GET" class="max-w-xl mx-auto mt-8 flex flex-col gap-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <input
                         class="w-full h-12 px-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
                         placeholder="Your Name"
-                        type="text"
+                        type="text" required
                       />
                       <input
                         class="w-full h-12 px-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
                         placeholder="Your Email"
-                        type="email"
+                        type="email" required
                       />
                     </div>
                     <textarea
                       class="w-full p-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
                       placeholder="Your Message"
                       rows="5"
+                      required
                     ></textarea>
                     <button
                       class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors self-center"
-                      type="submit"
+                      type="submit" 
                     >
                       <span class="truncate">Send Message</span>
                     </button>
