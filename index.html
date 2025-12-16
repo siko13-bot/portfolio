@@ -735,15 +735,20 @@
                     I'm always open to discussing new projects or collaboration
                     opportunities. Feel free to send me a message.
                   </p>
-                  <form id="contact-form" action="./thank_you.html" method="GET" class="max-w-xl mx-auto mt-8 flex flex-col gap-4">
+                  <form id="contact-form" action="https://getform.io/f/awnvnjgb" method="POST" class="max-w-xl mx-auto mt-8 flex flex-col gap-4">
+                    <input type="hidden" name="_redirect" value="https://portfolio-nu-umber-70.vercel.app/thank_you.html" />
+
+    <input type="hidden" name="utm_source" value="contact_form" />
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <input
                         class="w-full h-12 px-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
+                        name="name"
                         placeholder="Your Name"
                         type="text" required
                       />
                       <input
                         class="w-full h-12 px-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
+                        name="_replyto"
                         placeholder="Your Email"
                         type="email" required
                       />
@@ -751,6 +756,7 @@
                     <textarea
                       class="w-full p-4 bg-white dark:bg-slate-900/50 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors dark:text-white"
                       placeholder="Your Message"
+                      name="message"
                       rows="5"
                       required
                     ></textarea>
