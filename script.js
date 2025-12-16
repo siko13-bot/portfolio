@@ -180,7 +180,7 @@ document.querySelectorAll(".parallax-layer").forEach((layer) => {
 // Function to handle the prefetch
 function prefetchThankYouPage() {
   const head = document.head;
-  const url = "./thank_you.html";
+  const url = "https://getform.io/thank-you?id=awnvnjgb";
 
   // Check if the link is already prefetched to avoid duplicates
   if (document.querySelector(`link[rel="prefetch"][href="${url}"]`)) {
