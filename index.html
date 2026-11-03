@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 
-<html class="light" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" />
     <title>Simple Developer Landing Page</title>
     <link
   rel="preload"
@@ -22,21 +24,44 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="script.js?v=20251214" defer></script>
     <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&amp;display=block"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
       rel="stylesheet"
     />
 
     <script>
-      // On page load or when changing themes, best to add inline in the `head` to avoid FOUC
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      // Theme: follows the device setting unless the visitor picks one with the toggle.
+      (function () {
+        var root = document.documentElement;
+        var mq = window.matchMedia("(prefers-color-scheme: dark)");
+        function saved() {
+          try {
+            var t = localStorage.getItem("theme");
+            return t === "dark" || t === "light" ? t : null;
+          } catch (e) { return null; }
+        }
+        function apply() {
+          var t = saved();
+          var dark = t ? t === "dark" : mq.matches;
+          root.classList.toggle("dark", dark);
+          root.classList.toggle("light", !dark);
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", dark ? "#101622" : "#f5f6f8");
+        }
+        apply();
+        // Live-update when the device switches between light and dark
+        var onChange = function () { if (!saved()) apply(); };
+        if (mq.addEventListener) mq.addEventListener("change", onChange);
+        else if (mq.addListener) mq.addListener(onChange);
+        window.toggleTheme = function () {
+          var dark = !root.classList.contains("dark");
+          try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+          apply();
+        };
+      })();
 
       tailwind.config = {
         darkMode: "class",
@@ -67,11 +92,13 @@
       }
       html {
         scroll-behavior: smooth;
-    
+        color-scheme: light;
       }
-
+      html.dark {
+        color-scheme: dark;
+      }
     </style>
-
+  </head>
   <body
     class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 transition duration-300 ease"
   >
@@ -135,7 +162,7 @@
                   >
                   <button
                     id="theme-toggle"
-                    onclick="toggleDarkMode()"
+                    onclick="toggleTheme()"
                     class="p-1 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition-colors duration-300"
                     aria-label="Toggle dark mode"
                   >
@@ -174,7 +201,7 @@
               </nav>
               <div class="flex items-center gap-4 md:hidden">
                 <button
-                  onclick="toggleDarkMode()"
+                  onclick="toggleTheme()"
                   class="p-1 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition-colors duration-300"
                   aria-label="Toggle dark mode"
                 >
@@ -638,6 +665,7 @@
   <source media="(max-width: 480px)" srcset="Assets/images/151shots_so-480.webp" />
   <img
     class="w-full h-auto object-cover aspect-video"
+    onerror="if(this.dataset.retried)return;this.dataset.retried=1;this.parentNode.querySelectorAll('source').forEach(function(x){x.remove()});var u=this.src;this.removeAttribute('src');this.src=u;"
     src="Assets/images/151shots_so.webp"
     alt="Screenshot of a modern e-commerce website dashboard"
     loading="lazy"
@@ -668,12 +696,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://siko13-bot.github.io/MYSQUARE/" target="_blank"
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://github.com/siko13-bot/MYSQUARE" target="_blank"
                           >GitHub</a
                         >
@@ -688,6 +716,7 @@
   <source media="(max-width: 480px)" srcset="Assets/images/908shots_so-480.webp" />
   <img
     class="w-full h-auto object-cover aspect-video"
+    onerror="if(this.dataset.retried)return;this.dataset.retried=1;this.parentNode.querySelectorAll('source').forEach(function(x){x.remove()});var u=this.src;this.removeAttribute('src');this.src=u;"
     src="Assets/images/908shots_so.webp"
     alt="Screenshot of a data visualization dashboard with charts and graphs"
     loading="lazy"
@@ -718,12 +747,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://intern-connect-eight.vercel.app/" target="_blank" 
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://github.com/siko13-bot/InternConnect" target="_blank"
                           >GitHub</a
                         >
@@ -738,6 +767,7 @@
   <source media="(max-width: 480px)" srcset="Assets/images/InternConnect-480.webp" />
   <img
     class="w-full h-auto object-cover aspect-video"
+    onerror="if(this.dataset.retried)return;this.dataset.retried=1;this.parentNode.querySelectorAll('source').forEach(function(x){x.remove()});var u=this.src;this.removeAttribute('src');this.src=u;"
     src="Assets/images/InternConnect.webp"
     alt="Screenshot of a data visualization dashboard with charts and graphs"
     loading="lazy"
@@ -768,12 +798,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://intern-connect-eight.vercel.app/" target="_blank" 
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://github.com/siko13-bot/InternConnect" target="_blank"
                           >GitHub</a
                         >
@@ -788,6 +818,7 @@
   <source media="(max-width: 480px)" srcset="Assets/images/104shots_so-480.webp" />
   <img
     class="w-full h-auto object-cover aspect-video"
+    onerror="if(this.dataset.retried)return;this.dataset.retried=1;this.parentNode.querySelectorAll('source').forEach(function(x){x.remove()});var u=this.src;this.removeAttribute('src');this.src=u;"
     src="Assets/images/104shots_so.webp"
     alt="Screenshot of a data visualization dashboard with charts and graphs"
     loading="lazy"
@@ -818,12 +849,12 @@
                       </div>
                       <div class="flex items-center gap-4 mt-2">
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://siko13-bot.github.io/ChatBotLandingPage/" target="_blank" 
                           >Live Demo</a
                         >
                         <a
-                          class="text-sm font-bold text-white-100 hover:underline"
+                          class="text-sm font-bold text-primary hover:underline"
                           href="https://github.com/siko13-bot/ChatBotLandingPage" target="_blank"
                           >GitHub</a
                         >
